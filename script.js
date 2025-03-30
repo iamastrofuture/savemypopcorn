@@ -1,33 +1,31 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Select all episode thumbnails
-  const episodes = document.querySelectorAll('.episode');
-  const modal = document.getElementById('videoModal');
-  const videoPlayer = document.getElementById('videoPlayer');
-  const closeBtn = document.querySelector('.close');
+const seriesList = [
+    { name: 'Family Guy', url: 'family-guy-season-1' },
+    { name: 'The Simpsons', url: 'the-simpsons-season-1' },
+    { name: 'South Park', url: 'south-park-season-1' }
+    // Add more series here
+];
 
-  // Add click event to each episode thumbnail
-  episodes.forEach(function(episode) {
-    episode.addEventListener('click', function() {
-      // Get the video URL from the data attribute
-      const videoUrl = episode.getAttribute('data-video');
-      // Set the iframe src to the video URL
-      videoPlayer.src = videoUrl;
-      // Show the modal
-      modal.style.display = 'block';
+// Sort series alphabetically
+seriesList.sort((a, b) => a.name.localeCompare(b.name));
+
+const seriesContainer = document.getElementById('series-list');
+seriesList.forEach(series => {
+    const link = document.createElement('a');
+    link.href = `/${series.url}/index.html`;  // Link to the season page
+    link.innerText = series.name;
+    seriesContainer.appendChild(link);
+});
+
+document.getElementById('search').addEventListener('input', (event) => {
+    const query = event.target.value.toLowerCase();
+    const filteredSeries = seriesList.filter(series => 
+        series.name.toLowerCase().includes(query)
+    );
+    seriesContainer.innerHTML = ''; // Clear previous list
+    filteredSeries.forEach(series => {
+        const link = document.createElement('a');
+        link.href = `/${series.url}/index.html`;
+        link.innerText = series.name;
+        seriesContainer.appendChild(link);
     });
-  });
-
-  // Close the modal when the close button is clicked
-  closeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-    videoPlayer.src = '';
-  });
-
-  // Close the modal when clicking outside the modal content
-  window.addEventListener('click', function(event) {
-    if (event.target == modal) {
-      modal.style.display = 'none';
-      videoPlayer.src = '';
-    }
-  });
 });
