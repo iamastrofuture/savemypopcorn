@@ -1,133 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Save My Popcorn - Series</title>
-  <style>
-    body {
-      background-color: #f1c40f; /* Bright background color */
-      font-family: Arial, sans-serif;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-    .series-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .series-card {
-      width: 200px;
-      text-align: center;
-      border: 2px solid #2c3e50;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .series-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    .series-card h2 {
-      margin: 10px 0;
-      color: #2c3e50;
-    }
-    .search-bar {
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto 30px;
-      display: flex;
-      justify-content: center;
-    }
-    .search-bar input {
-      width: 80%;
-      padding: 10px;
-      font-size: 16px;
-      border: 2px solid #2c3e50;
-      border-radius: 5px;
-      outline: none;
-    }
-    .search-bar button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #2c3e50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .search-bar button:hover {
-      background-color: #34495e;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaveMyPopcorn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 50%;
+            font-size: 16px;
+        }
+
+        .series-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .series-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .series-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .series-item h3 {
+            padding: 10px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+        }
+
+        .episode-list {
+            padding: 10px;
+        }
+
+        .episode-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .episode-item:last-child {
+            border-bottom: none;
+        }
+
+        .episode-item a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .episode-item a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Save My Popcorn</h1>
-    
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search for a series..." onkeyup="searchSeries()">
-      <button onclick="searchSeries()">Search</button>
-    </div>
-    
-    <!-- Series List -->
-    <div class="series-list">
-      <div class="series-card" id="familyGuy">
-        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/familyguy-thumb.jpg?raw=true" alt="Family Guy">
-        <h2>Family Guy</h2>
-        <a href="season1.html">Go to Season 1</a>
-      </div>
 
-      <!-- Add more series here -->
-      <div class="series-card" id="show2">
-        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/familyguy-thumb.jpg?raw=true" alt="Show 2">
-        <h2>Show 2</h2>
-        <a href="season2.html">Go to Season 1</a>
-      </div>
-      <div class="series-card" id="show3">
-        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/familyguy-thumb.jpg?raw=true" alt="Show 3">
-        <h2>Show 3</h2>
-        <a href="season3.html">Go to Season 1</a>
-      </div>
-      <div class="series-card" id="show4">
-        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/familyguy-thumb.jpg?raw=true" alt="Show 4">
-        <h2>Show 4</h2>
-        <a href="season4.html">Go to Season 1</a>
-      </div>
-    </div>
-  </div>
+    <header>
+        <h1>Welcome to SaveMyPopcorn</h1>
+    </header>
 
-  <script>
-    function searchSeries() {
-      var input, filter, seriesList, cards, card, i, txtValue;
-      input = document.getElementById('searchInput');
-      filter = input.value.toUpperCase();
-      seriesList = document.querySelector('.series-list');
-      cards = seriesList.getElementsByClassName('series-card');
-      
-      for (i = 0; i < cards.length; i++) {
-        card = cards[i];
-        txtValue = card.textContent || card.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
+    <div class="container">
+
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for a series..." onkeyup="filterSeries()">
+        </div>
+
+        <!-- Series List -->
+        <div class="series-list" id="seriesList">
+            <div class="series-item">
+                <img src="https://github.com/iamastrofuture/savemypopcorn/raw/main/images/familyguy-thumb.jpg" alt="Family Guy">
+                <h3>Family Guy</h3>
+                <div class="episode-list">
+                    <div class="episode-item"><a href="episode1.html">Season 1, Episode 1</a></div>
+                    <div class="episode-item"><a href="episode2.html">Season 1, Episode 2</a></div>
+                    <div class="episode-item"><a href="episode3.html">Season 1, Episode 3</a></div>
+                    <div class="episode-item"><a href="episode4.html">Season 1, Episode 4</a></div>
+                    <div class="episode-item"><a href="episode5.html">Season 1, Episode 5</a></div>
+                    <div class="episode-item"><a href="episode6.html">Season 1, Episode 6</a></div>
+                    <div class="episode-item"><a href="episode7.html">Season 1, Episode 7</a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to filter series based on the search bar input
+        function filterSeries() {
+            var input, filter, seriesList, seriesItems, h3, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            seriesList = document.getElementById("seriesList");
+            seriesItems = seriesList.getElementsByClassName("series-item");
+
+            for (i = 0; i < seriesItems.length; i++) {
+                h3 = seriesItems[i].getElementsByTagName("h3")[0];
+                txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    seriesItems[i].style.display = "";
+                } else {
+                    seriesItems[i].style.display = "none";
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
+
 </body>
 </html>
