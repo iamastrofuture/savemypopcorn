@@ -1,47 +1,67 @@
 body {
+  background: linear-gradient(45deg, #ffcc70, #ff8b94, #a0e3ff, #d2f898);
+  background-size: 600% 600%;
+  animation: gradient 15s ease infinite;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
 }
 
 h1 {
-  font-size: 36px;
-  margin-top: 20px;
+  font-size: 3rem;
+  margin-bottom: 2rem;
 }
 
-#search {
-  padding: 10px;
-  width: 200px;
-  margin-top: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-#series-list {
+.series-grid, .episode-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
 
-#series-list a {
+.series-card {
+  background: white;
+  border-radius: 10px;
   text-decoration: none;
-  font-size: 20px;
-  margin: 5px 0;
-  color: #333;
-  padding: 5px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  color: black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 200px;
+  padding: 1rem;
 }
 
-#series-list a:hover {
-  background-color: #007BFF;
-  color: #fff;
+.series-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.episode-grid a {
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 0.5rem;
+  display: inline-block;
+  color: #000;
+  font-weight: bold;
+}
+
+.video-wrapper {
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.nav-links a, .back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: blue;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
