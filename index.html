@@ -2,17 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Save My Popcorn</title>
+  <title>SaveMyPopcorn</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(45deg, #f06, #f9a);
+      font-family: sans-serif;
+      color: #000;
+      padding: 20px;
+    }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .series-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .series-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    #search-bar {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Save My Popcorn</h1>
-  <div class="series-grid">
-    <a href="family-guy.html" class="series-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Fg_1_DVD.jpg" alt="Family Guy Season 1">
-      <h2>Family Guy</h2>
-    </a>
-    <!-- Add more shows here later -->
+  <h1>SaveMyPopcorn - Series Collection</h1>
+
+  <!-- Search Bar -->
+  <div>
+    <input type="text" id="search-bar" placeholder="Search for series..." onkeyup="searchSeries()">
   </div>
+
+  <!-- Series Grid -->
+  <div class="series-grid">
+    <div class="series-card">
+      <a href="family-guy.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="Family Guy">
+        <h3>Family Guy</h3>
+      </a>
+    </div>
+
+    <div class="series-card">
+      <a href="the-simpsons.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="The Simpsons">
+        <h3>The Simpsons</h3>
+      </a>
+    </div>
+
+    <div class="series-card">
+      <a href="south-park.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="South Park">
+        <h3>South Park</h3>
+      </a>
+    </div>
+
+    <div class="series-card">
+      <a href="rick-and-morty.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="Rick and Morty">
+        <h3>Rick and Morty</h3>
+      </a>
+    </div>
+
+    <div class="series-card">
+      <a href="bob's-burgers.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="Bob's Burgers">
+        <h3>Bob's Burgers</h3>
+      </a>
+    </div>
+
+    <!-- Add more series here as needed -->
+  </div>
+
+  <div style="text-align: center;">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <!-- JavaScript for Search -->
+  <script>
+    function searchSeries() {
+      var input = document.getElementById('search-bar').value.toLowerCase();
+      var series = document.getElementsByClassName('series-card');
+      
+      // Loop through all series cards and hide those that don't match search term
+      for (var i = 0; i < series.length; i++) {
+        var title = series[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        if (title.includes(input)) {
+          series[i].style.display = '';
+        } else {
+          series[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
 </body>
 </html>
