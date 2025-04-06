@@ -1,145 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaveMyPopcorn</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <title>SaveMyPopcorn</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(45deg, #f06, #f9a);
+      font-family: sans-serif;
+      color: #000;
+      padding: 20px;
+    }
 
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
+    .series-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
 
-        .search-bar {
-            margin: 20px 0;
-            text-align: center;
-        }
+    .series-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
 
-        .search-bar input {
-            padding: 10px;
-            width: 50%;
-            font-size: 16px;
-        }
+    #search-bar {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
 
-        .series-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .series-item {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .series-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .series-item h3 {
-            padding: 10px;
-            font-size: 18px;
-            background-color: #333;
-            color: white;
-        }
-
-        .episode-list {
-            padding: 10px;
-        }
-
-        .episode-item {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .episode-item:last-child {
-            border-bottom: none;
-        }
-
-        .episode-item a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .episode-item a:hover {
-            text-decoration: underline;
-        }
-
-    </style>
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+  </style>
 </head>
 <body>
+  <h1>SaveMyPopcorn - Series Collection</h1>
 
-    <header>
-        <h1>Welcome to SaveMyPopcorn</h1>
-    </header>
+  <!-- Search Bar -->
+  <div>
+    <input type="text" id="search-bar" placeholder="Search for series..." onkeyup="searchSeries()">
+  </div>
 
-    <div class="container">
-
-        <!-- Search bar -->
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for a series..." onkeyup="filterSeries()">
-        </div>
-
-        <!-- Series List -->
-        <div class="series-list" id="seriesList">
-            <div class="series-item">
-                <img src="https://github.com/iamastrofuture/savemypopcorn/raw/main/images/familyguy-thumb.jpg" alt="Family Guy">
-                <h3>Family Guy</h3>
-                <div class="episode-list">
-                    <div class="episode-item"><a href="episode1.html">Season 1, Episode 1</a></div>
-                    <div class="episode-item"><a href="episode2.html">Season 1, Episode 2</a></div>
-                    <div class="episode-item"><a href="episode3.html">Season 1, Episode 3</a></div>
-                    <div class="episode-item"><a href="episode4.html">Season 1, Episode 4</a></div>
-                    <div class="episode-item"><a href="episode5.html">Season 1, Episode 5</a></div>
-                    <div class="episode-item"><a href="episode6.html">Season 1, Episode 6</a></div>
-                    <div class="episode-item"><a href="episode7.html">Season 1, Episode 7</a></div>
-                </div>
-            </div>
-        </div>
-
+  <!-- Series Grid -->
+  <div class="series-grid">
+    <div class="series-card">
+      <a href="family-guy.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="Family Guy">
+        <h3>Family Guy</h3>
+      </a>
     </div>
 
-    <script>
-        // Function to filter series based on the search bar input
-        function filterSeries() {
-            var input, filter, seriesList, seriesItems, h3, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            seriesList = document.getElementById("seriesList");
-            seriesItems = seriesList.getElementsByClassName("series-item");
+    <div class="series-card">
+      <a href="the-simpsons.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="The Simpsons">
+        <h3>The Simpsons</h3>
+      </a>
+    </div>
 
-            for (i = 0; i < seriesItems.length; i++) {
-                h3 = seriesItems[i].getElementsByTagName("h3")[0];
-                txtValue = h3.textContent || h3.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    seriesItems[i].style.display = "";
-                } else {
-                    seriesItems[i].style.display = "none";
-                }
-            }
+    <div class="series-card">
+      <a href="south-park.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="South Park">
+        <h3>South Park</h3>
+      </a>
+    </div>
+
+    <div class="series-card">
+      <a href="rick-and-morty.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="Rick and Morty">
+        <h3>Rick and Morty</h3>
+      </a>
+    </div>
+
+    <div class="series-card">
+      <a href="bob's-burgers.html">
+        <img src="https://raw.githubusercontent.com/iamastrofuture/savemypopcorn/main/images/your-image.jpg" alt="Bob's Burgers">
+        <h3>Bob's Burgers</h3>
+      </a>
+    </div>
+
+    <!-- Add more series here as needed -->
+  </div>
+
+  <div style="text-align: center;">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <!-- JavaScript for Search -->
+  <script>
+    function searchSeries() {
+      var input = document.getElementById('search-bar').value.toLowerCase();
+      var series = document.getElementsByClassName('series-card');
+      
+      // Loop through all series cards and hide those that don't match search term
+      for (var i = 0; i < series.length; i++) {
+        var title = series[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        if (title.includes(input)) {
+          series[i].style.display = '';
+        } else {
+          series[i].style.display = 'none';
         }
-    </script>
-
+      }
+    }
+  </script>
 </body>
 </html>
